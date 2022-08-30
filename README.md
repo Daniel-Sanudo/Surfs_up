@@ -10,23 +10,23 @@ A python engine is first set up to connect with the datase which in this case is
 
 Once this is done, it is now possible to query the data using either SQL queries with engine.execute as shown here:
 
-'''
+~~~~
 engine.execute('SELECT date, tobs  FROM measurement WHERE date LIKE "%-xx-%"').fetchall()
-'''
+~~~~
 
 It's also possible to query the data using python as shown in the next example:
 
-'''
+~~~~
 session.query(Measurement.date, Measurement.tobs).filter(func.strftime("%m", Measurement.date) == 'xx').all()
-'''
+~~~~
 
 In both cases, xx refers to the month number. For this analysis, the information for June (06) and December (12) is queried.
 
 By using pands, it's possible to transform the queried information into a DataFrame with the following segment of code:
 
-'''
+~~~~
 pd.DataFrame(mmmm_Temperatures, columns=['date','temperature'])
-'''
+~~~~
 
 Where mmmm refers to the month's name. 
 
